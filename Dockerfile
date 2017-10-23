@@ -1,7 +1,9 @@
 FROM phusion/baseimage:0.9.21
 LABEL authors="WangYan <i@wangyan.org>"
 
-RUN apt-get -y update && apt-get -y install git-core net-tools
+RUN apt-get -y update && \
+    apt-get -y upgrade && \
+    apt-get -y install git-core net-tools
 
 ENV NODE_VERSION 6.11.4
 RUN set -xe && \
