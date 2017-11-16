@@ -1,6 +1,6 @@
 # docker-node
 
-Ubuntu: `16.04` NodeJs: `6.11.4`
+Ubuntu: `16.04` NodeJs: `8.9.1`
 
 ## 快速使用
 
