@@ -10,8 +10,14 @@ RUN set -xe && \
     curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" && \
     tar -zxf "node-v$NODE_VERSION-linux-x64.tar.gz" -C /usr/local --strip-components=1 && \
     rm -f node-v$NODE_VERSION-linux-x64.tar.gz && \
-    npm i -g yarn pm2 && \
-    yarn global add yarn && \
+    node -v 
+
+RUN set -xe && \
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+    apt-get update && apt-get -y install yarn --no-install-recommends --no-install-suggests && \
+    yarn -v  && node -v && \
+    yarn global add pm2 && \
     npm cache clean --force && rm -rf /tmp/npm*
 
 RUN apt-get clean && \
